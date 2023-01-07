@@ -4,7 +4,7 @@
 # Expense Tracker App: Overview
 
 ## Deployment
-This app is being deployed using Netlify
+This app is being deployed using Netlify  
 Link to app: https://sparkly-truffle-dc29a9.netlify.app/
 
 ## Motivation Behind Project 
