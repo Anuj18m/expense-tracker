@@ -4,7 +4,8 @@
 # Expense Tracker App: Overview
 
 ## Deployment
-Currently in the process of finding a suitable hosting service to host this app. The link will be added soon.
+This app is being deployed using Netlify
+Link to app: https://sparkly-truffle-dc29a9.netlify.app/
 
 ## Motivation Behind Project 
 As a university student it is very important to be able to keep track of where I am spending my money. Many of the expense tracking websites and apps
@@ -47,6 +48,7 @@ Canvas API Docs: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
 <ul>
 <li>I plan to learn how to use Redux for state management.  </li>
 <li>I plan to experience with other UI libraries such as Material UI and Chakara UI.  </li>
+<li>I plan to make this app mobile responsive throught CSS media queries or using TailwindCSS  </li>
 <li>I plan to learn how to add a backend to the expense tracker app and use a database (most likely MongoDB) to store the data instead of local storage.  </li>
 </ul>
 >>>>>>> 886b1be (Create README.md)
