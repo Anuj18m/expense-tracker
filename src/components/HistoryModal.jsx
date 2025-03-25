@@ -3,17 +3,6 @@ import { useContext } from "react";
 import CategoriesContext from "../store/CategoriesContext";
 import HistoryContext from "../store/HistoryContext";
 
-type HistoryModalProps = {
-  opened: boolean;
-  setOpened: (state: boolean) => void;
-  label: string;
-  amount: number;
-  dateCreated: string;
-  id: string;
-  type: string;
-  category: string;
-};
-
 const HistoryModal = ({
   opened,
   setOpened,
@@ -23,11 +12,9 @@ const HistoryModal = ({
   type,
   id,
   category,
-}: HistoryModalProps) => {
+}) => {
   const { deleteHistoryElement } = useContext(HistoryContext);
-  const { subtractCategoryAmount, addCategory } = useContext(
-    CategoriesContext
-  );
+  const { subtractCategoryAmount, addCategory } = useContext(CategoriesContext);
 
   return (
     <Modal
@@ -67,20 +54,14 @@ const HistoryModal = ({
           marginTop: "30px",
         }}
       >
-        <Button
-          onClick={() => {
-            setOpened(false);
-          }}
-        >
-          Exit
-        </Button>
+        <Button onClick={() => setOpened(false)}>Exit</Button>
         <Button
           color="red"
           onClick={() => {
-            // based on the type of transaction adjust the budget / expense amount accordingly
             deleteHistoryElement(id);
+
             if (type === "Expenses Reset") {
-              // put the returned expenses in the Uncategorized category
+              // Assign returned expenses to the Uncategorized category
               addCategory({
                 label: "Uncategorized",
                 amount: amount,
@@ -93,7 +74,8 @@ const HistoryModal = ({
                 id: crypto.randomUUID(),
               });
             }
-            // subtract the amount of the removed transaction from the category it belonged to
+
+            // Subtract the removed transaction amount from its category
             subtractCategoryAmount(category, amount);
             setOpened(false);
           }}

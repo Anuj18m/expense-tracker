@@ -2,23 +2,7 @@ import { useState } from "react";
 import { Card, Text } from "@mantine/core";
 import HistoryModal from "./HistoryModal";
 
-type HistoryItemProps = {
-  label: string;
-  amount: number;
-  type: string;
-  id: string;
-  dateCreated: string;
-  category: string;
-};
-
-const HistoryItem = ({
-  label,
-  amount,
-  type,
-  id,
-  dateCreated,
-  category
-}: HistoryItemProps) => {
+const HistoryItem = ({ label, amount, type, id, dateCreated, category }) => {
   const [opened, setOpened] = useState(false);
   // #69DB7C is green.4 and #FF8787 is red.4.
   const color =

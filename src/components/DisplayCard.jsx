@@ -1,12 +1,6 @@
 import { Card, Text } from "@mantine/core";
 
-type DisplayCardProps = {
-  label: string;
-  amount: number;
-  color: string;
-};
-
-const DisplayCard = ({ label, amount, color }: DisplayCardProps) => {
+const DisplayCard = ({ label, amount, color }) => {
   return (
     <Card
       shadow="sm"

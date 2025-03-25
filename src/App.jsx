@@ -7,7 +7,6 @@ import { HistoryContextProvider } from "./store/HistoryContext";
 
 export default function App() {
   return (
-    // Global styles
     <MantineProvider
       theme={{
         fontFamily: "open-sans",
@@ -16,7 +15,6 @@ export default function App() {
       }}
     >
       <Paper>
-        {/* Contexts */}
         <AvailableCategoriesContextProvider>
           <HistoryContextProvider>
             <CategoriesContextProvider>

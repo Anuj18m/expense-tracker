@@ -1,7 +1,6 @@
 import {
   AppShell,
   Burger,
-  ColorScheme,
   ColorSchemeProvider,
   Header,
   MantineProvider,
@@ -24,86 +23,48 @@ import AddExpensePage from "../pages/AddExpensePage";
 import { useLocalStorage } from "@mantine/hooks";
 import DisplayCategoriesPage from "../pages/DisplayCategoriesPage";
 
-type HistoryElement = {
-  id: string;
-  label: string;
-  amount: number;
-  type: string;
-};
-
 const MainAppShell = () => {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
-  const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
+  const [colorScheme, setColorScheme] = useLocalStorage({
     key: "theme",
     defaultValue: "dark",
   });
-  const toggleColorScheme = (value?: ColorScheme) =>
+
+  const toggleColorScheme = (value) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
 
   return (
-    // Handles providing the correct color scheme to child elements
-    <ColorSchemeProvider
-      colorScheme={colorScheme}
-      toggleColorScheme={toggleColorScheme}
-    >
-      <MantineProvider
-        theme={{ colorScheme }}
-        withGlobalStyles
-        withNormalizeCSS
-      >
+    <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+      <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
         <BrowserRouter>
           <AppShell
-            styles={(theme) => ({
+            styles={{
               main: {
                 backgroundColor:
                   theme.colorScheme === "dark"
                     ? theme.colors.dark[8]
                     : theme.colors.gray[0],
               },
-            })}
+            }}
             navbarOffsetBreakpoint="sm"
             asideOffsetBreakpoint="sm"
             navbar={
-              <Navbar
-                p="md"
-                hiddenBreakpoint="sm"
-                hidden={!opened}
-                width={{ sm: 250, lg: 350 }}
-              >
-                <NavigationLink
-                  label="Home"
-                  icon={<AiOutlineHome />}
-                  link="/"
-                />
-                <NavigationLink
-                  label="Add an Expense"
-                  icon={<BsPlusCircle />}
-                  link="/newExpense"
-                />
-                <NavigationLink
-                  label="Add / Update Your Budget"
-                  icon={<MdAttachMoney />}
-                  link="/newBudget"
-                />
-                <NavigationLink
-                  label="View Spending in Categories"
-                  icon={<BsBarChartLine />}
-                  link="/categories"
-                />
+              <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 250, lg: 350 }}>
+                <NavigationLink label="Home" icon={<AiOutlineHome />} link="/" />
+                <NavigationLink label="Add an Expense" icon={<BsPlusCircle />} link="/newExpense" />
+                <NavigationLink label="Add / Update Your Budget" icon={<MdAttachMoney />} link="/newBudget" />
+                <NavigationLink label="View Spending in Categories" icon={<BsBarChartLine />} link="/categories" />
               </Navbar>
             }
             header={
               <Header
                 height={{ base: 50, md: 70 }}
                 p="md"
-                sx={(theme) => ({
-                  color:
-                    theme.colorScheme === "dark"
-                      ? theme.colors.dark[1]
-                      : theme.colors.gray[9],
+                sx={{
+                  color: theme.colorScheme === "dark" ? theme.colors.dark[1] : theme.colors.gray[9],
                   fontSize: "25px",
-                })}
+                }}
               >
                 <div
                   style={{
@@ -122,13 +83,7 @@ const MainAppShell = () => {
                       mr="xl"
                     />
                   </MediaQuery>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      height: "100%",
-                    }}
-                  >
+                  <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
                     <CgCalculator />
                     <Text ml={10}>Expense Tracker App</Text>
                   </div>

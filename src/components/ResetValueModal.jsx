@@ -2,13 +2,7 @@ import { Group, Text, ThemeIcon, UnstyledButton } from "@mantine/core";
 import React from "react";
 import { Link } from "react-router-dom";
 
-type NavigationLinkProps = {
-  label: string;
-  icon: React.ReactNode;
-  link: string;
-};
-
-const NavigationLink = ({ icon, label, link }: NavigationLinkProps) => {
+const NavigationLink = ({ icon, label, link }) => {
   return (
     <UnstyledButton
       component={Link}
@@ -30,7 +24,7 @@ const NavigationLink = ({ icon, label, link }: NavigationLinkProps) => {
       })}
     >
       <Group>
-        <ThemeIcon variant="light" style={{backgroundColor: "transparent"}}>
+        <ThemeIcon variant="light" style={{ backgroundColor: "transparent" }}>
           {icon}
         </ThemeIcon>
         <Text size="lg">{label}</Text>
